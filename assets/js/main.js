@@ -1,25 +1,22 @@
 'use strict';
 
-navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+//navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
 var constraints = {
   audio: false,
   video: true
 };
 
-var video = document.querySelector('video');
-
 function successCallback(stream) {
-  window.stream = stream;
-  if (window.URL) {
-    video.src = window.URL.createObjectURL(stream);
-  } else {
-    video.src = stream;
-  }
+    var video = document.querySelector('video');
+    video.srcObject = stream;
+    video.onloadmetadata = function(e) {
+        video.play();
+    }
 }
 
 function errorCallback(error) {
   console.log('navigator.getUserMedia error: ', error);
 }
 
-navigator.getUserMedia(constraints, successCallback, errorCallback);
+navigator.mediaDevices.getUserMedia(constraints).then(successCallback).catch(errorCallback);
