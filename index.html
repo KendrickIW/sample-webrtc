@@ -2,11 +2,10 @@
 <html>
 
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <title>Realtime communication with WebRTC</title>
 
-  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="/css/main.css" />
 
 </head>
 
@@ -14,9 +13,13 @@
 
   <h1>Realtime communication with WebRTC</h1>
 
-  <video autoplay></video>
+  <div id="videos">
+    <video id="localVideo" autoplay muted></video>
+    <video id="remoteVideo" autoplay></video>
+  </div>
 
-  <script src="js/lib/adapter-latest.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/lib/adapter.js"></script>
   <script src="js/main.js"></script>
 
 </body>
