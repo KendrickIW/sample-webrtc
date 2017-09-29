@@ -95,7 +95,9 @@ var remoteVideo = document.querySelector('#remoteVideo');
 
 navigator.mediaDevices.getUserMedia({
   audio: false,
-  video: true
+  video: {
+    facingMode: "user"
+  }
 })
 .then(gotStream)
 .catch(function(e) {
@@ -113,7 +115,9 @@ function gotStream(stream) {
 }
 
 var constraints = {
-  video: true
+  video: {
+    facingMode: "user"
+  }
 };
 
 console.log('Getting user media with constraints', constraints);
