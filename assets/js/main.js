@@ -12,9 +12,9 @@ var constraints = {
 function successCallback(stream) {
     var video = document.querySelector('video');
     video.srcObject = stream;
-    video.onloadedmetadata = function(e) {
+    //video.onloadedmetadata = function(e) {
         video.play();
-    }
+    //}
 }
 
 function errorCallback(error) {
